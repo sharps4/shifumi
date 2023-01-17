@@ -9,34 +9,66 @@ var lizard = document.getElementById('Lizard');
 lizard.addEventListener('click',playerSelection);
 var spock = document.getElementById('Spock');
 spock.addEventListener('click',playerSelection);
-//fonction permetant de garder la selection du jouer
+//fonction permetant de garder la selection du joueur
 
 function playerSelection() {
-console.log("tegzeest");
-}
+    let player = this.getAttribute('data-variable');
+    document.getElementById('player').innerHTML = player;
+console.log(player);
+};
+
+
+// La fonction choisie aléatoirement entre les 5 choix puis récupere leur id
+function getRandomChoice() {
+    let botrandom = Math.floor(Math.random() * 5)
+    if (botrandom == 1) {
+       let botselection = "rock";
+       document.getElementById('botselection').innerHTML = botselection;
+       console.log(botselection);
+    } else if (botrandom == 2) {
+        let  botselection = "paper";
+        document.getElementById('botselection').innerHTML = botselection;
+        console.log(botselection);
+    } else if (botrandom == 3) {
+        let botselection = "scissors";
+        document.getElementById('botselection').innerHTML = botselection;
+        console.log(botselection);
+    } else if (botrandom == 4) {
+        let botselection = "lizard";
+        document.getElementById('botselection').innerHTML = botselection;
+        console.log(botselection);
+    } else if (botrandom == 5) {
+        let botselection = "spock";
+        document.getElementById('botselection').innerHTML = botselection;
+        console.log(botselection);
+    }
+};   
+
+
+
 
 
 
 
 // fonction de la manche
-function manche(playerSelection,){
-    if((playerSelection==rock&&borselection==scissors)||(playerSelection==paper&&borselection==rock)||(playerSelection==scissors&&borselection==paper)||(playerSelection==spock&&borselection==rock)||(playerSelection==spock&&borselection==scissors)||(playerSelection==lizard&&borselection==spock)||(playerSelection==lizard&&borselection==paper)){
-        
+function manche(playerSelection,getRandomChoice){
+    if((player==rock&&botselection==scissors)||(player==paper&&botselection==rock)||(player==scissors&&botselection==paper)||(player==spock&&botselection==rock)||(player==spock&&botselection==scissors)||(player==lizard&&botselection==spock)||(player==lizard&&botselection==paper)){
+        console.log("win");
     };
-    if((playerSelection==rock&&borselection==rock)||(playerSelection==scissors&&borselection==scissors)||(playerSelection==paper&&borselection==paper)||(playerSelection==spock&&borselection==spock)||(playerSelection==lizard&&borselection==lizard)){
-        
+    if((player==rock&&botselection==rock)||(player==scissors&&botselection==scissors)||(player==paper&&botselection==paper)||(player==spock&&botselection==spock)||(player==lizard&&botselection==lizard)){
+        console.log("égaliter");
     }else{
-
+        console.log("lose");
     }
-}
+};
 
 
 
 
-let win_ia = win-ia // variable qui stock la win de l'ia si elle gagne le round
-let win_user = win-user // variable qui stock la win de l'user si il gagne le round
-let score_ia = score-ia // variable qui stock le score de l'ia 
-let score_user = score-user // variable qui stock la win de l'user
+let win_ia = null // variable qui stock la win de l'ia si elle gagne le round
+let win_user = null // variable qui stock la win de l'user si il gagne le round
+let score_ia = null // variable qui stock le score de l'ia 
+let score_user = null // variable qui stock la win de l'user
 
 
 // fonction qui permet de calculer et d'ajouter le score à l'ia ou l'user si l'un d'entre eux gagnent le round
@@ -51,14 +83,17 @@ function winLoose() {
 };
 
 
-var ia_rock =""
-var ia_paper =""
-var ia_scissors =""
-var ia_lizard =""
-var ia_spock=""
+// Calcul le pourcentage de victoire de l'utilisateur et l'affiche
+var pourcentageVictoire = ((score_user / manche) * 100).toFixed(2)
+function winrateUser() {
+    document.getElementById('winrate').innerHTML = pourcentageVictoire;
+};
 
-function getRandomChoice(max) {
-    return Math.floor(Math.random() * 5);
-}
+//Button play
+var play = document.getElementById('startManche');
+play.addEventListener('click',getRandomChoice);
 
-if (Marh.floor)
+//fonction fonctionement du jeu
+function shifumi(){
+    
+}   
