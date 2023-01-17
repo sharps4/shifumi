@@ -9,3 +9,11 @@
 .margin-top{
     margin-top: 20px;
 }  
+
+.border-box {
+    border: solid 10px black;
+}
+
+.box-h {
+    height: 600px;
+}
