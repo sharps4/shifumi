@@ -5,3 +5,7 @@
 .bg {
     background-color: var(--bg-container);
 }
+
+.margin-top{
+    margin-top: 20px;
+}  
