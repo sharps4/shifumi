@@ -99,10 +99,10 @@ function winLoose() {
     console.log(score_user);
     console.log(score_ia);
     console.log(testround);
-    let pourcentageVictoire = ((score_user / testround) * 100);
+    let pourcentageVictoire = ((score_user / testround) * 100); // pourcentage de victoire
     testrate = pourcentageVictoire
 
-    if(win_ia == 0 || win_user == 0) {
+    if(win_ia == 0 || win_user == 0) { //si il y a égalité alors on garde le score des joueurs 
         score_user = score_user
         score_ia = score_ia
     }
