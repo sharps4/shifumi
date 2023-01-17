@@ -44,10 +44,10 @@ function getRandomChoice() {
 
 let win_ia = null // variable qui stock la win de l'ia si elle gagne le round
 let win_user = null // variable qui stock la win de l'user si il gagne le round
-let score_ia = null // variable qui stock le score de l'ia 
-let score_user = null // variable qui stock la win de l'user
+let score_ia = 0 // variable qui stock le score de l'ia 
+let score_user = 0 // variable qui stock la win de l'user
 let round_comp = null 
-let round = null
+let round = 0
 
 // fonction de la manche
 function manche(){
@@ -55,8 +55,8 @@ function manche(){
         console.log("win");
         win_user = 1
         round_comp = 1
-        winLoose()
         roundChange()
+        winLoose()
         winrateUser()
     };
     if((playervar=="rock"&&botselection=="rock")||(playervar=="scissors"&&botselection=="scissors")||(playervar=="paper"&&botselection=="paper")||(playervar=="spock"&&botselection=="spock")||(playervar=="lizard"&&botselection=="lizard")){
@@ -69,37 +69,45 @@ function manche(){
          console.log("loose");
          win_ia = 1
          round_comp = 1
-         winLoose()
          roundChange()
+         winLoose()
          winrateUser()
       };
+}
+
+var testround;
+function roundChange() {
+    if (round_comp == 1) {
+        round = round + 1
+        document.getElementById('round').innerHTML = round;
+        testround = round
+    }
 }
 
 var testrate;
 // fonction qui permet de calculer et d'ajouter le score à l'ia ou l'user si l'un d'entre eux gagnent le round
 function winLoose() {
     if (win_ia == 1) { // le =1 signifie que l'ia a gagné mais elle peut être changé en fonction du nom que tu donnes à ta variable, ex: win_ia = winTrue, si la valeur n'est pas égale à 1 alors l'ia à perdue le round
-        score_ia = score_ia+1 // on ajoute +1 au score de l'ia si elle à gagné
+        score_ia = score_ia + 1 // on ajoute +1 au score de l'ia si elle à gagné
         document.getElementById('score-ia').innerHTML = score_ia; // on modife le texte qui contient le score en ciblant son id
-    } else if(win_user == 1) {
+    } 
+    else if(win_user == 1) {
         score_user = score_user + 1 
         document.getElementById('score-user').innerHTML = score_user;
-    } else {
-        score_user = 0
-        score_ia = 0
-    }
-
+    } 
+    
     console.log(score_user);
-    let pourcentageVictoire = ((score_user / round) * 100).toFixed(2);
+    console.log(score_ia);
+    console.log(testround);
+    let pourcentageVictoire = ((score_user / testround) * 100);
     testrate = pourcentageVictoire
+
+    if(win_ia == 0 || win_user == 0) {
+        score_user = score_user
+        score_ia = score_ia
+    }
 };
 
-function roundChange() {
-    if (round_comp == 1) {
-        round = round + 1
-        document.getElementById('round').innerHTML = round;
-    }
-}
 
 // Calcul le pourcentage de victoire de l'utilisateur et l'affiche
 function winrateUser() {
