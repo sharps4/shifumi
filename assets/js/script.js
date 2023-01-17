@@ -91,7 +91,7 @@ function winLoose() {
         score_ia = score_ia + 1 // on ajoute +1 au score de l'ia si elle à gagné
         document.getElementById('score-ia').innerHTML = score_ia; // on modife le texte qui contient le score en ciblant son id
     } 
-    else if(win_user == 1) {
+    if(win_user == 1) {
         score_user = score_user + 1 
         document.getElementById('score-user').innerHTML = score_user;
     } 
@@ -99,7 +99,7 @@ function winLoose() {
     console.log(score_user);
     console.log(score_ia);
     console.log(testround);
-    let pourcentageVictoire = ((score_user / testround) * 100); // pourcentage de victoire
+    let pourcentageVictoire = ((score_user / testround) * 100).toFixed(2); // pourcentage de victoire
     testrate = pourcentageVictoire
 
     if(win_ia == 0 || win_user == 0) { //si il y a égalité alors on garde le score des joueurs 
