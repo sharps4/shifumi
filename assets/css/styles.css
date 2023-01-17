@@ -25,7 +25,12 @@
 }
 
 .choice:hover {
+    background-color: rgb(255, 255, 98);
+    color: black;
+    border: none;
     cursor: pointer;
+    transform: translateY(-3px);
+    transition: transform 0.8s ease;
 }
 
 /*boutton*/
