@@ -1,14 +1,17 @@
-:root {
-    --bg-container: red;
-}
+
 
 .bg {
     background-color: var(--bg-container);
 }
 
+/**/
 .margin-top{
     margin-top: 20px;
-}  
+} 
+
+.margin{
+    margin: 5px;
+} 
 
 .border-box {
     border: solid 10px black;
@@ -17,3 +20,18 @@
 .box-h {
     height: 600px;
 }
+/*couleur des elements*/
+.bg-grey{
+    background-color: #d3d4d9;
+}
+
+.border-grey{
+    border-color:#d3d4d9 ;
+}
+.bg-purple{
+    background-color: #221B3D;
+}
+.txt-color{
+    color: #221B3D;
+}
+/*fin couleur des elements*/

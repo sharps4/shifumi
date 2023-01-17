@@ -4,26 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CSS-->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <!--Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    
     <title>Shifumi</title>
 </head>
-<body>
+<body class="bg-purple txt-color">
     <main>
         <section>
-            <div class="container bg">
+            <div class="container bg-grey">
                 <div class="row flex-row align-items-center">
                     <div class="col justify-content-center d-flex align-items-center">
+                        <!--nombre de manche-->
                         <div class="col fs-3">
-                            <p>Manche: 1</p>
+                            <p class="text-center">Manche: 1</p>
                         </div>
-                        <div class="col fs-3 ">
-                            <p >% victoire</p>
+                        <!--taux de victoire-->
+                        <div class="col fs-3">
+                            <p class="text-end text-center" >% victoire</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container bg box-h mt-5">
+            <div class="container bg-grey box-h mt-5 ">
                 <div class="col">
                     <div class="row">
                         <div class="col-12 justify-content-center d-flex align-items-center">
@@ -33,7 +40,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <h2 class="text-center">0-0</h2>
+                        <h2 class="text-center d-flex justify-content-center"><p id="score-user">0</p>-<p id="score-ia">0</p></h2>
                     </div>
                     <div class="row">
                         <div class="col-12 justify-content-center d-flex align-items-center">
@@ -44,29 +51,42 @@
                     </div>
                 </div>
             </div>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col">
-                        papier
+            
+            <!--symbole-->
+            <div class="container text-center margin-top txt-color">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-2 border border-primary margin bg-grey "  id="Paper">
+                        <i class="fa-regular fa-hand"></i>
                     </div>
-                    <div class="col">
-                        PA
+                    <div class="col-2 border border-primary margin bg-grey" id="Rock">
+                        <i class="fa-regular fa-hand-back-fist"></i>
                     </div>
-                    <div class="col">
-                        ciseaux
+                    <div class="col-2 border border-primary margin bg-grey"  id="Scissors">
+                        <i class="fa-regular fa-hand-scissors"></i>
                     </div>
                     </div>
-                <div class="row">
-                    <div class="col">
-                    lezard
+                <div class="row d-flex justify-content-center ">
+                    <div class="col-2 border border-primary margin bg-grey" id="Lizard">
+                        <i class="fa-regular fa-hand-lizard"></i>
                     </div>
-                    <div class="col">
-                    spock
+                    <div class="col-2 border border-primary margin bg-grey" id="Spock">
+                        <i class="fa-regular fa-hand-spock"></i>
                     </div>
                 </div>
             </div>
-            <div class="text-center">
+
+            <!--Button-->
+            <div class="text-center margin-top">
                 <button class="btn btn-primary btn-lg">Jouer</button>
+            </div>
+
+            <button id="popup-button">Cliquez pour ouvrir la pop-up</button>
+            <div id="popup" style="display: none;">
+            <div class="popup-content">
+                <span class="popup-close-button">&times;</span>
+                <h2>Titre de la pop-up</h2>
+                <p>Contenu de la pop-up</p>
+            </div>
             </div>
         </section>
     </main>
