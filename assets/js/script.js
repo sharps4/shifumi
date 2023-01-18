@@ -11,12 +11,6 @@ var spock = document.getElementById('Spock');
 spock.addEventListener('click',playerSelection);
 //fonction permetant de garder la selection du joueur
 
-function saveData() {
-    localStorage.setItem('score_iasto', score_ia);
-    localStorage.setItem('score_usersto', score_user);
-    localStorage.setItem('roundsto', round);
-    localStorage.setItem('winpourcentagesto', winpourcentage);
-}
 
 
 var playervar;
@@ -69,7 +63,15 @@ let round = 0
 //       };
 // }
 
-
+var testround;
+function roundChange() {
+    if (round_comp == 1) {
+        round = round + 1
+        testround = round;
+        localStorage.setItem('roundsto', testround);
+        document.getElementById('round').textContent = localStorage.getItem('roundsto');
+    }
+}
 
 
 function manche() {
@@ -106,17 +108,6 @@ function manche() {
 }
 
 
-
-var testround;
-function roundChange() {
-    if (round_comp == 1) {
-        round = round + 1
-        testround = round;
-        nnn= localStorage.getItem('roundsto')
-        document.getElementById("round").innerHTML = nnn;
-    }
-}
-
 var testrate;
 // fonction qui permet de calculer et d'ajouter le score à l'ia ou l'user si l'un d'entre eux gagnent le round
 function winLoose() {
@@ -138,9 +129,8 @@ function winLoose() {
         score_user = score_user
         score_ia = score_ia
     }
-
-    localStorage.getItem('score_iasto', score_ia);
-    localStorage.getItem('score_usersto', score_user);
+    localStorage.setItem('score_usersto', score_user)
+    localStorage.setItem('score_iasto', score_ia)
 };
 
 
@@ -151,6 +141,8 @@ function winrateUser() {
     winpourcentage =  document.getElementById('winrate').innerHTML = testrate + "%";
 };
 
+
+
 function resetRound() {
     if (testround == 10) {
         console.log("manche 10")
@@ -159,12 +151,20 @@ function resetRound() {
         localStorage.clear('roundsto');
         localStorage.clear('winpourcentagesto');
  }
-}
+};
+
+function saveData() {
+    localStorage.getItem('score_iasto');
+    localStorage.getItem('score_usersto');
+    localStorage.getItem('roundsto');
+    localStorage.getItem('winpourcentagesto');
+};
+
+
 
 //Button play
 var play = document.getElementById('startManche');
 // play.addEventListener('click',getRandomChoice);
 play.addEventListener('click',() => {botSelection(); manche(); resetRound()});
 // play.addEventListener('click',manche);
-
-windows.addEventListener('unload',() => {saveData()});
+window.addEventListener('unload',saveData)
