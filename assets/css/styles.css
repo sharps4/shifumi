@@ -66,6 +66,7 @@
     border: solid #221B3D;
     font-size: 25px;
 }
+
 .reset{
     font-family: sirenia,sans-serif;
     background-color: #d3d4d9;
@@ -75,6 +76,10 @@
     margin-top: 80px;
     font-size: 25px;
     
+}
+
+.icons {
+    width: 60px;
 }
 /*fin boutton*/
 

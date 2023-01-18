@@ -1,14 +1,14 @@
 // variable qui permet de selectioner l'action du joueur lord d'un click
-var rock = document.getElementById('Rock');
-rock.addEventListener('click',playerSelection);
-var paper = document.getElementById('Paper');
-paper.addEventListener('click',playerSelection);
-var scissors = document.getElementById('Scissors');
-scissors.addEventListener('click',playerSelection);
-var lizard = document.getElementById('Lizard');
-lizard.addEventListener('click',playerSelection);
-var spock = document.getElementById('Spock');
-spock.addEventListener('click',playerSelection);
+var ange = document.getElementById('ange');
+ange.addEventListener('click',playerSelection);
+var sorciere = document.getElementById('sorciere');
+sorciere.addEventListener('click',playerSelection);
+var villageois = document.getElementById('villageois');
+villageois.addEventListener('click',playerSelection);
+var loups_garous = document.getElementById('loups-garous');
+loups-garous.addEventListener('click',playerSelection);
+var demon = document.getElementById('demon');
+demon.addEventListener('click',playerSelection);
 //fonction permetant de garder la selection du joueur
 
 
@@ -51,11 +51,11 @@ function roundChange() {
 
 function manche() {
     var winCombinations = {
-        "fa-regular fa-hand-back-fist pad": ["fa-regular fa-hand-scissors pad", "fa-regular fa-hand-lizard pad"],
-        "fa-regular fa-hand pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-spock pad"],
-        "fa-regular fa-hand-scissors pad": ["fa-regular fa-hand pad", "fa-regular fa-hand-lizard pad"],
-        "fa-regular fa-hand-lizard pad": ["fa-regular fa-hand-spock pad", "fa-regular fa-hand pad"],
-        "fa-regular fa-hand-spock pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-scissors pad"]
+        "fa-regular fa-hand-back-fist pad": ["fa-regular fa-hand-villageois pad", "fa-regular fa-hand-loups-garous pad"],
+        "fa-regular fa-hand pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-demon pad"],
+        "fa-regular fa-hand-villageois pad": ["fa-regular fa-hand pad", "fa-regular fa-hand-loups-garous pad"],
+        "fa-regular fa-hand-loups-garous pad": ["fa-regular fa-hand-demon pad", "fa-regular fa-hand pad"],
+        "fa-regular fa-hand-demon pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-villageois pad"]
     };
     
     if (winCombinations[playervar].includes(botselection)) {
