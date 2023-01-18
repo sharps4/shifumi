@@ -14,17 +14,17 @@ demon.addEventListener('click',playerSelection);
 
 
 var playervar;
-function playerSelection() {
+function playerSelection() { // carte jouée par le joueur
 playervar = this.getAttribute("id");
-document.getElementById('player').innerHTML = '<img src="assets/img/' + playervar + '.png" width="100" height="100">';
+document.getElementById('player').innerHTML = '<img src="assets/img/' + playervar + '.png" width="150" height="150">';
 };
 
 var botselection;
-function botSelection() {
+function botSelection() { // carte jouée par le bot
 var choices = document.getElementsByClassName("choice");
 var botrandom = Math.floor(Math.random() * choices.length);
 botselection = choices[botrandom].getAttribute("id");
-document.getElementById('botselection').innerHTML = '<img src="assets/img/' + botselection + '.png" width="100" height="100">';
+document.getElementById('botselection').innerHTML = '<img src="assets/img/' + botselection + '.png" width="150" height="150">';
 }
 
 
@@ -48,9 +48,8 @@ function roundChange() {
 }
 
 
-
 function manche() {
-    var winCombinations = {
+    var winCombinations = { // Tableau des win conditions
         "sorciere": ["loups-garous", "ange"],
         "villageois": ["sorciere", "demon"],
         "ange": ["demon", "villageois"],
@@ -58,7 +57,7 @@ function manche() {
         "loups-garous": ["ange", "villageois"]
     };
     
-    if (winCombinations[playervar].includes(botselection)) {
+    if (winCombinations[playervar].includes(botselection)) { // compare les cartes du player aux cartes du bot pour savoir qui gagne
         console.log("win")
         win_user = 1;
         round_comp = 1;
@@ -66,14 +65,14 @@ function manche() {
         winLoose();
         winrateUser();
     }
-    else if (winCombinations[botselection].includes(playervar)) {
+    else if (winCombinations[botselection].includes(playervar)) { // compare les cartes du bot aux cartes du player pour savoir qui gagne
         console.log("loose")
         win_ia = 1;
         round_comp = 1;
         roundChange(); 
         winLoose();
         winrateUser();
-    } else {
+    } else { 
         win_user = 0;
         win_ia = 0;
         winLoose();
@@ -117,7 +116,7 @@ function winrateUser() {
 };
 
 
-function resetBTN () {
+function resetBTN () { // reset toutes les valeurs stockées dans le local storage quand on clique sur le bouton reset
     localStorage.clear('score_iasto');
     localStorage.clear('score_usersto');
     localStorage.clear('roundsto');
@@ -125,7 +124,7 @@ function resetBTN () {
 }
 
 
-function resetRound() {
+function resetRound() { // quand on atteint 10 manches le jeu se reset et un popup s'affiche pour nous dire si on a gagné ou perdu
     if (testround == 10) {
         console.log(testround)
         localStorage.clear('score_iasto');
@@ -139,23 +138,23 @@ function resetRound() {
 };
 
 
-function victoryMSG() {
+function victoryMSG() { // popup de victoire ou défaite
     if(score_user>score_ia){
-        document.getElementById('victoryMSG').innerHTML="Vous avez gagner GG petit con";
+        document.getElementById('victoryMSG').innerHTML="Vous avez gagné GG";
     }
     if(score_ia>score_user){
-        document.getElementById('victoryMSG').innerHTML="Vous avez perdu GG grosse merde";
+        document.getElementById('victoryMSG').innerHTML="Vous avez perdu...";
     }if(score_ia==score_user){
-        document.getElementById('victoryMSG').innerHTML="Vous avez eu une égaliter bravot mème pas capable de batre un bot";
+        document.getElementById('victoryMSG').innerHTML="Vous avez eu une égalitée bravo même pas capable de battre un bot";
     }
 };
 
 
 //Button play
-var play = document.getElementById('startManche');
+var play = document.getElementById('startManche'); // on déclare la variable play
 // play.addEventListener('click',getRandomChoice);
-play.addEventListener('click',() => {botSelection(); manche(); resetRound(); victoryMSG()});
-window.onload = function () {
+play.addEventListener('click',() => {botSelection(); manche(); resetRound(); victoryMSG()}); // on ajoute l'envent click au bouton qui déclanche les fonctions nécessaires au jeu
+window.onload = function () { // local storage 
     document.getElementById('round').innerHTML = localStorage.getItem('roundsto');
     document.getElementById('score-user').innerHTML = localStorage.getItem('score_usersto');
     document.getElementById('score-ia').innerHTML = localStorage.getItem('score_iasto');
