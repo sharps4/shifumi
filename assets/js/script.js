@@ -16,7 +16,7 @@ demon.addEventListener('click',playerSelection);
 var playervar;
 function playerSelection() { // carte jouée par le joueur
 playervar = this.getAttribute("id");
-document.getElementById('player').innerHTML = '<img src="assets/img/' + playervar + '.png" width="150" height="150">';
+document.getElementById('player').innerHTML = '<img src="assets/img/' + playervar + '.png" width="200" height="200">';
 };
 
 var botselection;
@@ -24,7 +24,7 @@ function botSelection() { // carte jouée par le bot
 var choices = document.getElementsByClassName("choice");
 var botrandom = Math.floor(Math.random() * choices.length);
 botselection = choices[botrandom].getAttribute("id");
-document.getElementById('botselection').innerHTML = '<img src="assets/img/' + botselection + '.png" width="150" height="150">';
+document.getElementById('botselection').innerHTML = '<img src="assets/img/' + botselection + '.png" width="200" height="200">';
 }
 
 
