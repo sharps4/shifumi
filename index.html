@@ -88,7 +88,7 @@
             <button type="button" class="popup" data-bs-toggle="modal" data-bs-target="#popup">Afficher les règles</button>
 
             <!-- Pop-up -->
-            <div id="popup" class="modal ">
+            <div id="popup" class="modal">
                 <div class="modal-dialog modal-dialog-centered ">
                     <div class="modal-content ">
                         <div class="modal-header bg-grey text-center ">
@@ -110,8 +110,19 @@
                     </div>
                 </div>
             </div>
-            <input type="button" class="reset" value = "recommencer" onclick="history.go(0)" />
-            
+            <input type="button" class="reset " value = "recommencer" onclick="resetBTN(), history.go(0)"/>
+
+
+            <div id="popup2" class="modal d-none">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content">
+                        <div class="modal-header bg-grey text-center ">
+                            <p id="victoryMSG"></p>
+                        </div>
+                        <button type="button" class="closepopup" onclick="resetBTN(), history.go(0)">Recommencer</button>
+                    </div>
+                </div>
+            </div>
         </details>
         </section>
     </main>

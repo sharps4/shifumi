@@ -33,6 +33,10 @@
     transition: transform 0.8s ease;
 }
 
+.d-none {
+    display: none;
+}
+
 /*boutton*/
 .button-play{
     font-family: sirenia,sans-serif;
