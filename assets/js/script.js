@@ -6,7 +6,7 @@ sorciere.addEventListener('click',playerSelection);
 var villageois = document.getElementById('villageois');
 villageois.addEventListener('click',playerSelection);
 var loups_garous = document.getElementById('loups-garous');
-loups-garous.addEventListener('click',playerSelection);
+loups_garous.addEventListener('click',playerSelection);
 var demon = document.getElementById('demon');
 demon.addEventListener('click',playerSelection);
 //fonction permetant de garder la selection du joueur
@@ -15,17 +15,16 @@ demon.addEventListener('click',playerSelection);
 
 var playervar;
 function playerSelection() {
-    playervar = this.getElementsByTagName("i")[0].getAttribute("class");
-    document.getElementById('player').innerHTML = '<i class="' + playervar + '"></i>';
-}; 
+playervar = this.getAttribute("id");
+document.getElementById('player').innerHTML = '<img src="assets/img/' + playervar + '.png">';
+};
 
 var botselection;
 function botSelection() {
-    var choices = document.getElementsByClassName("choice"); // crée un tableau de tous les éléments ayant le classe choice
-    var botrandom = Math.floor(Math.random() * choices.length); // chosit aléatoirement dans ce tableau
-    botselection = choices[botrandom].getElementsByTagName("i")[0].getAttribute("class"); // ajoute la classe font awesome
-    document.getElementById('botselection').innerHTML = '<i class="' + botselection + '"></i>'; // affiche l'élément
-    
+var choices = document.getElementsByClassName("choice");
+var botrandom = Math.floor(Math.random() * choices.length);
+botselection = choices[botrandom].getAttribute("id");
+document.getElementById('botselection').innerHTML = '<img src="assets/img/' + botselection + '.png">';
 }
 
 
@@ -51,11 +50,11 @@ function roundChange() {
 
 function manche() {
     var winCombinations = {
-        "fa-regular fa-hand-back-fist pad": ["fa-regular fa-hand-villageois pad", "fa-regular fa-hand-loups-garous pad"],
-        "fa-regular fa-hand pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-demon pad"],
-        "fa-regular fa-hand-villageois pad": ["fa-regular fa-hand pad", "fa-regular fa-hand-loups-garous pad"],
-        "fa-regular fa-hand-loups-garous pad": ["fa-regular fa-hand-demon pad", "fa-regular fa-hand pad"],
-        "fa-regular fa-hand-demon pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-villageois pad"]
+        "#sorciere": ["#loups-garous", "#ange"],
+        "#villageois": ["#sorciere", "#demon"],
+        "#ange": ["#demon", "#villageois"],
+        "#demon": ["#sorciere", "#loups-garous"],
+        "#loups-garous": ["#ange", "#villageois"]
     };
     
     if (winCombinations[playervar].includes(botselection)) {
