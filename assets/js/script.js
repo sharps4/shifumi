@@ -13,33 +13,42 @@ spock.addEventListener('click',playerSelection);
 
 var playervar;
 function playerSelection() {
-    playervar = this.getAttribute('data-variable');
-    document.getElementById('player').innerHTML = playervar;
-    console.log(playervar);
+    playervar = this.getElementsByTagName("i")[0].getAttribute("class");
+    console.log(playervar)
+    document.getElementById('player').innerHTML = '<i class="' + playervar + '"></i>';
+    console.log(this.id);
 };
 
-
 // La fonction choisie aléatoirement entre les 5 choix puis récupere leur id
+// var botselection;
+// function getRandomChoice() {
+//     botrandom = Math.floor(Math.random() * 4)
+//     if (botrandom == 0) {
+//        botselection = "rock";
+//        console.log(botselection);
+//     } else if (botrandom == 1) {
+//         botselection = "paper";
+//         console.log(botselection);
+//     } else if (botrandom == 2) {
+//         botselection = "scissors";
+//         console.log(botselection);
+//     } else if (botrandom == 3) {
+//         botselection = "lizard";
+//         console.log(botselection);
+//     } else if (botrandom == 4) {
+//         botselection = "spock";
+//         console.log(botselection);
+//     }
+// };   
+
 var botselection;
-function getRandomChoice() {
-    botrandom = Math.floor(Math.random() * 4)
-    if (botrandom == 0) {
-       botselection = "rock";
-       console.log(botselection);
-    } else if (botrandom == 1) {
-        botselection = "paper";
-        console.log(botselection);
-    } else if (botrandom == 2) {
-        botselection = "scissors";
-        console.log(botselection);
-    } else if (botrandom == 3) {
-        botselection = "lizard";
-        console.log(botselection);
-    } else if (botrandom == 4) {
-        botselection = "spock";
-        console.log(botselection);
-    }
-};   
+function botSelection() {
+    var choices = document.getElementsByClassName("choice"); // crée un tableau de tous les éléments ayant le classe choice
+    var botrandom = Math.floor(Math.random() * choices.length); // chosit aléatoirement dans ce tableau
+    botselection = choices[botrandom].getElementsByTagName("i")[0].getAttribute("class"); // ajoute la classe font awesome
+    document.getElementById('botselection').innerHTML = '<i class="' + botselection + '"></i>'; // affiche l'élément
+    console.log(botselection)
+}
 
 
 let win_ia = null // variable qui stock la win de l'ia si elle gagne le round
@@ -50,30 +59,67 @@ let round_comp = null
 let round = 0
 
 // fonction de la manche
-function manche(){
-    if((playervar=="rock"&&botselection=="scissors")||(playervar=="rock"&&botselection=="lizard")||(playervar=="paper"&&botselection=="rock")||(playervar=="paper"&&botselection=="spock")||(playervar=="scissors"&&botselection=="paper")||(playervar=="scissors"&&botselection=="lizard")||(playervar=="spock"&&botselection=="rock")||(playervar=="spock"&&botselection=="scissors")||(playervar=="lizard"&&botselection=="spock")||(playervar=="lizard"&&botselection=="paper")){
-        console.log("win");
-        win_user = 1
-        round_comp = 1
-        roundChange()
-        winLoose()
-        winrateUser()
+// function manche(){
+//     if((playervar=="rock"&&botselection=="scissors")||(playervar=="rock"&&botselection=="lizard")||(playervar=="paper"&&botselection=="rock")||(playervar=="paper"&&botselection=="spock")||(playervar=="scissors"&&botselection=="paper")||(playervar=="scissors"&&botselection=="lizard")||(playervar=="spock"&&botselection=="rock")||(playervar=="spock"&&botselection=="scissors")||(playervar=="lizard"&&botselection=="spock")||(playervar=="lizard"&&botselection=="paper")){
+//         console.log("win");
+//         win_user = 1
+//         round_comp = 1
+//         roundChange()
+//         winLoose()
+//         winrateUser()
+//     };
+//     if((playervar=="rock"&&botselection=="rock")||(playervar=="scissors"&&botselection=="scissors")||(playervar=="paper"&&botselection=="paper")||(playervar=="spock"&&botselection=="spock")||(playervar=="lizard"&&botselection=="lizard")){
+//         console.log("égalité");
+//         win_user = 0
+//         win_ia = 0
+//         winLoose()
+//      };
+//     if((botselection=="rock"&&playervar=="scissors")||(botselection=="rock"&&playervar=="lizard")||(botselection=="paper"&&playervar=="rock")||(botselection=="paper"&&playervar=="spock")||(botselection=="scissors"&&playervar=="paper")||(botselection=="scissors"&&playervar=="lizard")||(botselection=="spock"&&playervar=="rock")||(botselection=="spock"&&playervar=="scissors")||(botselection=="lizard"&&playervar=="spock")||(botselection=="lizard"&&playervar=="paper")){
+//          console.log("loose");
+//          win_ia = 1
+//          round_comp = 1
+//          roundChange()
+//          winLoose()
+//          winrateUser()
+//       };
+// }
+
+
+
+
+function manche() {
+    var winCombinations = {
+        "fa-regular fa-hand-back-fist pad": ["fa-regular fa-hand-scissors pad", "fa-regular fa-hand-lizard pad"],
+        "fa-regular fa-hand pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-spock pad"],
+        "fa-regular fa-hand-scissors pad": ["fa-regular fa-hand pad", "fa-regular fa-hand-lizard pad"],
+        "fa-regular fa-hand-lizard pad": ["fa-regular fa-hand-spock pad", "fa-regular fa-hand padd"],
+        "fa-regular fa-hand-spock pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-scissors pad"]
     };
-    if((playervar=="rock"&&botselection=="rock")||(playervar=="scissors"&&botselection=="scissors")||(playervar=="paper"&&botselection=="paper")||(playervar=="spock"&&botselection=="spock")||(playervar=="lizard"&&botselection=="lizard")){
+    
+    if (winCombinations[playervar].includes(botselection)) {
+        console.log("win");
+        win_user = 1;
+        round_comp = 1;
+        roundChange();
+        winLoose();
+        winrateUser();
+    } else if (playervar === botselection) {
         console.log("égalité");
-        win_user = 0
-        win_ia = 0
-        winLoose()
-     };
-    if((botselection=="rock"&&playervar=="scissors")||(botselection=="rock"&&playervar=="lizard")||(botselection=="paper"&&playervar=="rock")||(botselection=="paper"&&playervar=="spock")||(botselection=="scissors"&&playervar=="paper")||(botselection=="scissors"&&playervar=="lizard")||(botselection=="spock"&&playervar=="rock")||(botselection=="spock"&&playervar=="scissors")||(botselection=="lizard"&&playervar=="spock")||(botselection=="lizard"&&playervar=="paper")){
-         console.log("loose");
-         win_ia = 1
-         round_comp = 1
-         roundChange()
-         winLoose()
-         winrateUser()
-      };
+        win_user = 0;
+        win_ia = 0;
+        winLoose();
+    } 
+    else if (winCombinations[botselection].includes(playervar)) {
+        console.log("loose");
+        win_ia = 1;
+        round_comp = 1;
+        roundChange();
+        winLoose();
+        winrateUser();
+    }
 }
+
+
 
 var testround;
 function roundChange() {
@@ -90,8 +136,7 @@ function winLoose() {
     if (win_ia == 1) { // le =1 signifie que l'ia a gagné mais elle peut être changé en fonction du nom que tu donnes à ta variable, ex: win_ia = winTrue, si la valeur n'est pas égale à 1 alors l'ia à perdue le round
         score_ia = score_ia + 1 // on ajoute +1 au score de l'ia si elle à gagné
         document.getElementById('score-ia').innerHTML = score_ia; // on modife le texte qui contient le score en ciblant son id
-    } 
-    if(win_user == 1) {
+    } else if(win_user == 1) {
         score_user = score_user + 1 
         document.getElementById('score-user').innerHTML = score_user;
     } 
@@ -115,10 +160,9 @@ function winrateUser() {
     document.getElementById('winrate').innerHTML = testrate + "%";
 };
 
+
 //Button play
 var play = document.getElementById('startManche');
-play.addEventListener('click',getRandomChoice);
+// play.addEventListener('click',getRandomChoice);
 play.addEventListener('click',manche);
-play.addEventListener('click', () => {
-    document.getElementById('botselection').innerHTML = botselection;
-});
+play.addEventListener('click',botSelection);
