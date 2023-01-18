@@ -16,7 +16,7 @@ demon.addEventListener('click',playerSelection);
 var playervar;
 function playerSelection() {
 playervar = this.getAttribute("id");
-document.getElementById('player').innerHTML = '<img src="assets/img/' + playervar + '.png">';
+document.getElementById('player').innerHTML = '<img src="assets/img/' + playervar + '.png" width="100" height="100">';
 };
 
 var botselection;
@@ -24,7 +24,7 @@ function botSelection() {
 var choices = document.getElementsByClassName("choice");
 var botrandom = Math.floor(Math.random() * choices.length);
 botselection = choices[botrandom].getAttribute("id");
-document.getElementById('botselection').innerHTML = '<img src="assets/img/' + botselection + '.png">';
+document.getElementById('botselection').innerHTML = '<img src="assets/img/' + botselection + '.png" width="100" height="100">';
 }
 
 
@@ -50,14 +50,15 @@ function roundChange() {
 
 function manche() {
     var winCombinations = {
-        "#sorciere": ["#loups-garous", "#ange"],
-        "#villageois": ["#sorciere", "#demon"],
-        "#ange": ["#demon", "#villageois"],
-        "#demon": ["#sorciere", "#loups-garous"],
-        "#loups-garous": ["#ange", "#villageois"]
+        "sorciere": ["loups-garous", "ange"],
+        "villageois": ["sorciere", "demon"],
+        "ange": ["demon", "villageois"],
+        "demon": ["sorciere", "loups-garous"],
+        "loups-garous": ["ange", "villageois"]
     };
     
     if (winCombinations[playervar].includes(botselection)) {
+        console.log("win")
         win_user = 1;
         round_comp = 1;
         roundChange();
@@ -65,9 +66,10 @@ function manche() {
         winrateUser();
     }
     else if (winCombinations[botselection].includes(playervar)) {
+        console.log("loose")
         win_ia = 1;
         round_comp = 1;
-        roundChange();
+        roundChange(); 
         winLoose();
         winrateUser();
     } else {
@@ -88,8 +90,9 @@ function winLoose() {
         score_user = score_user + 1 
         document.getElementById('score-user').innerHTML = score_user;
     } 
-    if(score_user == 0 || score_ia == 0 ) {
+    if(score_user == 0 ) {
         document.getElementById('score-user').innerHTML = "0";
+    } else if (score_ia == 0){
         document.getElementById('score-ia').innerHTML = "0";
     }
     
