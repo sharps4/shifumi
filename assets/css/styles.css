@@ -34,7 +34,7 @@
 }
 
 /*boutton*/
-.button-reset{
+.button-play{
     font-family: sirenia,sans-serif;
     background-color: #d3d4d9;
     color: #221B3D;
@@ -61,6 +61,16 @@
     color: #221B3D;
     border: solid #221B3D;
     font-size: 25px;
+}
+.reset{
+    font-family: sirenia,sans-serif;
+    background-color: #d3d4d9;
+    color: #221B3D;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    margin-top: 80px;
+    font-size: 25px;
+    
 }
 /*fin boutton*/
 

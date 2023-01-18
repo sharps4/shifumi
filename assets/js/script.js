@@ -11,35 +11,20 @@ var spock = document.getElementById('Spock');
 spock.addEventListener('click',playerSelection);
 //fonction permetant de garder la selection du joueur
 
+function saveData() {
+    localStorage.setItem('score_iasto', score_ia);
+    localStorage.setItem('score_usersto', score_user);
+    localStorage.setItem('roundsto', round);
+    localStorage.setItem('winpourcentagesto', winpourcentage);
+}
+
+
 var playervar;
 function playerSelection() {
     playervar = this.getElementsByTagName("i")[0].getAttribute("class");
     console.log(playervar)
     document.getElementById('player').innerHTML = '<i class="' + playervar + '"></i>';
-    console.log(this.id);
-};
-
-// La fonction choisie aléatoirement entre les 5 choix puis récupere leur id
-// var botselection;
-// function getRandomChoice() {
-//     botrandom = Math.floor(Math.random() * 4)
-//     if (botrandom == 0) {
-//        botselection = "rock";
-//        console.log(botselection);
-//     } else if (botrandom == 1) {
-//         botselection = "paper";
-//         console.log(botselection);
-//     } else if (botrandom == 2) {
-//         botselection = "scissors";
-//         console.log(botselection);
-//     } else if (botrandom == 3) {
-//         botselection = "lizard";
-//         console.log(botselection);
-//     } else if (botrandom == 4) {
-//         botselection = "spock";
-//         console.log(botselection);
-//     }
-// };   
+}; 
 
 var botselection;
 function botSelection() {
@@ -92,9 +77,10 @@ function manche() {
         "fa-regular fa-hand-back-fist pad": ["fa-regular fa-hand-scissors pad", "fa-regular fa-hand-lizard pad"],
         "fa-regular fa-hand pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-spock pad"],
         "fa-regular fa-hand-scissors pad": ["fa-regular fa-hand pad", "fa-regular fa-hand-lizard pad"],
-        "fa-regular fa-hand-lizard pad": ["fa-regular fa-hand-spock pad", "fa-regular fa-hand padd"],
+        "fa-regular fa-hand-lizard pad": ["fa-regular fa-hand-spock pad", "fa-regular fa-hand pad"],
         "fa-regular fa-hand-spock pad": ["fa-regular fa-hand-back-fist pad", "fa-regular fa-hand-scissors pad"]
     };
+    console.log(botselection)
     
     if (winCombinations[playervar].includes(botselection)) {
         console.log("win");
@@ -103,12 +89,7 @@ function manche() {
         roundChange();
         winLoose();
         winrateUser();
-    } else if (playervar === botselection) {
-        console.log("égalité");
-        win_user = 0;
-        win_ia = 0;
-        winLoose();
-    } 
+    }
     else if (winCombinations[botselection].includes(playervar)) {
         console.log("loose");
         win_ia = 1;
@@ -116,7 +97,12 @@ function manche() {
         roundChange();
         winLoose();
         winrateUser();
-    }
+    } else {
+        console.log("égalité");
+        win_user = 0;
+        win_ia = 0;
+        winLoose();
+    } 
 }
 
 
@@ -125,8 +111,9 @@ var testround;
 function roundChange() {
     if (round_comp == 1) {
         round = round + 1
-        document.getElementById('round').innerHTML = round;
-        testround = round
+        testround = round;
+        nnn= localStorage.getItem('roundsto')
+        document.getElementById("round").innerHTML = nnn;
     }
 }
 
@@ -151,18 +138,33 @@ function winLoose() {
         score_user = score_user
         score_ia = score_ia
     }
+
+    localStorage.getItem('score_iasto', score_ia);
+    localStorage.getItem('score_usersto', score_user);
 };
 
 
 // Calcul le pourcentage de victoire de l'utilisateur et l'affiche
+var winpourcentage;
 function winrateUser() {
     console.log(testrate);
-    document.getElementById('winrate').innerHTML = testrate + "%";
+    winpourcentage =  document.getElementById('winrate').innerHTML = testrate + "%";
 };
 
+function resetRound() {
+    if (testround == 10) {
+        console.log("manche 10")
+        localStorage.clear('score_iasto');
+        localStorage.clear('score_usersto');
+        localStorage.clear('roundsto');
+        localStorage.clear('winpourcentagesto');
+ }
+}
 
 //Button play
 var play = document.getElementById('startManche');
 // play.addEventListener('click',getRandomChoice);
-play.addEventListener('click',manche);
-play.addEventListener('click',botSelection);
+play.addEventListener('click',() => {botSelection(); manche(); resetRound()});
+// play.addEventListener('click',manche);
+
+windows.addEventListener('unload',() => {saveData()});
