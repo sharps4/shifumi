@@ -99,15 +99,16 @@ function manche() {
         console.log("win")
         win_user = 1;
         round_comp = 1;
+        win_ia = 0;
         roundChange();
         winLoose();
         winrateUser();
-        throwFlask()
     }
     else if (winCombinations[botselection].includes(playervar)) { // compare les cartes du bot aux cartes du player pour savoir qui gagne
         console.log("loose")
         win_ia = 1;
         round_comp = 1;
+        win_user = 0;
         roundChange(); 
         winLoose();
         winrateUser();
@@ -188,7 +189,7 @@ function victoryMSG() { // popup de victoire ou défaite
     if(score_ia>score_user){
         document.getElementById('victoryMSG').innerHTML="Vous avez perdu...";
     }if(score_ia==score_user){
-        document.getElementById('victoryMSG').innerHTML="Egalité entre vous et le bot...";
+        document.getElementById('victoryMSG').innerHTML="Egalitée entre vous et le bot...";
     }
 };
 // function permetant d'arretet et de relancer le son d'amniance
@@ -214,29 +215,3 @@ window.onload = function () { // local storage
     document.getElementById('score-ia').innerHTML = localStorage.getItem('score_iasto');
     document.getElementById('winrate').innerHTML = localStorage.getItem('winpourcentagesto');
 };
-
-
-function throwFlask() {
-    if (playervar == sorciere && botselection == loups-garous || botselection == ange) {
-        flask.addEventListener("click", throwFlask);
-    };
-    if(botselection == sorciere && playervar == loups-garous || playervar == ange) {
-    //flask.style.display = "block";
-    flask.addEventListener("click", reverseThrowFlask);
-    };
-    
-};
-
-
-var flask = document.getElementById("flask");
-          
-          // Animation qui déplace la fiole vers la droite
-          function throwFlask() {
-            flask.style.right = "700px";
-            flask.style.transform = "rotate(-120deg)";
-          }
-          function reverseThrowFlask() {
-            flask.style.marginRight = "100px"
-            flask.style.left = "700px";
-            flask.style.transform = "rotate(120deg)";
-          }
