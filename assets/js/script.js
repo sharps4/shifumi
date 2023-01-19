@@ -12,7 +12,7 @@ demon.addEventListener('click',playerSelection);
 
 // déclaration des variable contenant le son
 var song_ambiance = new Audio()
-song_ambiance.src = './assets/audios/ambiance.mp4'
+song_ambiance.src = './assets/audios/ambiance.mp3'
 
 var song_sorciere = new Audio()
 song_sorciere.src = './assets/audios/sorciere.mp3';
@@ -21,7 +21,7 @@ var song_villageois = new Audio()
 song_villageois.src = './assets/audios/villageois.3gp';
 
 var song_ange = new Audio()
-song_ange.src = './assets/audios/ange.mp4';
+song_ange.src = './assets/audios/ange.mp3';
 
 var song_demon = new Audio()
 song_demon.src = './assets/audios/demon.mp3';
@@ -102,6 +102,7 @@ function manche() {
         roundChange();
         winLoose();
         winrateUser();
+        throwFlask()
     }
     else if (winCombinations[botselection].includes(playervar)) { // compare les cartes du bot aux cartes du player pour savoir qui gagne
         console.log("loose")
@@ -187,7 +188,7 @@ function victoryMSG() { // popup de victoire ou défaite
     if(score_ia>score_user){
         document.getElementById('victoryMSG').innerHTML="Vous avez perdu...";
     }if(score_ia==score_user){
-        document.getElementById('victoryMSG').innerHTML="Egalitée entre vous et le bot...";
+        document.getElementById('victoryMSG').innerHTML="Egalité entre vous et le bot...";
     }
 };
 // function permetant d'arretet et de relancer le son d'amniance
@@ -213,3 +214,29 @@ window.onload = function () { // local storage
     document.getElementById('score-ia').innerHTML = localStorage.getItem('score_iasto');
     document.getElementById('winrate').innerHTML = localStorage.getItem('winpourcentagesto');
 };
+
+
+function throwFlask() {
+    if (playervar == sorciere && botselection == loups-garous || botselection == ange) {
+        flask.addEventListener("click", throwFlask);
+    };
+    if(botselection == sorciere && playervar == loups-garous || playervar == ange) {
+    //flask.style.display = "block";
+    flask.addEventListener("click", reverseThrowFlask);
+    };
+    
+};
+
+
+var flask = document.getElementById("flask");
+          
+          // Animation qui déplace la fiole vers la droite
+          function throwFlask() {
+            flask.style.right = "700px";
+            flask.style.transform = "rotate(-120deg)";
+          }
+          function reverseThrowFlask() {
+            flask.style.marginRight = "100px"
+            flask.style.left = "700px";
+            flask.style.transform = "rotate(120deg)";
+          }

@@ -27,8 +27,38 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-  }
+}
 
+body {  
+    background-image: url("../img/sunset.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.margin-index {
+    margin-top: 25%;
+}
+
+.title-index {
+    font-family: sirenia,sans-serif;    
+    font-size: 70px;
+    color: white;
+}
+
+.playbtn {
+    font-family: sirenia,sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(0, 155, 0);
+    font-size: 30px;
+}
+
+.playbtn:hover {
+    background-color: rgb(0, 140, 0);
+    transform: translateY(-3px);
+    transition: transform 0.8s ease;
+}
 
 /**/
 .margin-top{
@@ -85,9 +115,6 @@
     background-color: var(--opa-loups-garous);
 }
 
-.playstop {
-    margin-left: 1395px;
-}
 
 .carte1:hover {
     background-color: var(--sorciere);
@@ -170,7 +197,7 @@
 
 .sec-btn:hover {
     background-color: #c1c1c1;
-    transform: translateY(-3px);
+    transform: translateY(-1px);
     transition: transform 0.8s ease;
 }
 
@@ -226,6 +253,12 @@
     border-radius: 5px 5px 5px 5px;
 }
 
+.musicbutton:hover {
+    background-color: #c1c1c1;
+    transform: translateY(-2px);
+    transition: transform 0.8s ease; 
+}
+
 /*fin boutton*/
 
 p {
@@ -263,3 +296,14 @@ h2 {
     color: var(--dark-blue);
 }
 /*fin couleur des elements*/
+
+.flask-container {
+    position: relative;
+    right: 100px;
+  }
+
+  #flask {
+    width: 100px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
