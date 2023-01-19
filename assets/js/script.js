@@ -10,6 +10,7 @@ loups_garous.addEventListener('click',playerSelection);
 var demon = document.getElementById('demon');
 demon.addEventListener('click',playerSelection);
 
+// Variables pour les anims
 var flask = document.getElementById('flask')
 var fork = document.getElementById('fork')
 var ray = document.getElementById('ray')
@@ -22,7 +23,7 @@ var ray2 = document.getElementById('ray2')
 var fire2 = document.getElementById('fire2')
 var claw2 = document.getElementById('claw2')
 
-
+// Anims Player
 function poisonThrow() {
     flask.classList.remove('d-none')
     gsap.fromTo(".flask", { x: 0 }, { x: -720, rotation: -120 }) 
@@ -79,8 +80,7 @@ function removeClaw() {
 };
 
 
-
-
+// Anims IA
 function poisonThrowIA() {
     flask2.classList.remove('d-none')
     gsap.fromTo(".flask2", { x: -720 }, { x: 790, rotation: 120 }) 
@@ -189,14 +189,14 @@ document.getElementById('botselection').innerHTML = '<img src="assets/img/' + bo
 };
 
 
-let win_ia = null // variable qui stock la win de l'ia si elle gagne le round
-let win_user = null // variable qui stock la win de l'user si il gagne le round
-let score_ia = 0 // variable qui stock le score de l'ia 
-let score_user = 0 // variable qui stock la win de l'user
+let win_ia = null
+let win_user = null
+let score_ia = 0 // score de l'ia initialisé à 0
+let score_user = 0 // score du player initialisé à 0
 let round_comp = null 
-let round = 0
+let round = 0 // score du round initialisé à 0
 
-
+// Compteur de manche
 var testround;
 function roundChange() {
     testround = localStorage.getItem('roundsto');
@@ -208,7 +208,7 @@ function roundChange() {
     }
 };
 
-
+// Fonctionnement des ùanches
 function manche() {
     removePoison()
     removeFork()
@@ -327,7 +327,7 @@ function victoryMSG() { // popup de victoire ou défaite
         document.getElementById('victoryMSG').innerHTML="Egalité...";
     }
 };
-// function permetant d'arretet et de relancer le son d'amniance
+// function permetant d'arreter et de relancer le son d'ambiance
 function ambiancePlay() {
     song_ambiance.play()
 }
@@ -336,32 +336,33 @@ function ambianceStop() {
     song_ambiance.pause()
 }
 
-// Get the modal
+// POPUP
 var modal_popup = document.getElementById("myModal_popup");
 
-// Get the button that opens the modal
+
 var btn_popup = document.getElementById("myBtn_popup");
 
-// Get the <span> element that closes the modal
+
 var span_popup = document.getElementsByClassName("close_popup")[0];
 
-// When the user clicks the button, open the modal 
+// affiche le popup
 btn_popup.onclick = function() {
   modal_popup.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
+// close le popup
 span_popup.onclick = function() {
   modal_popup.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// ferme quand on clique autre part
 window.onclick = function(event) {
   if (event.target == modal_popup) {
     modal_popup.style.display = "none";
   }
 }
 
+// buttons audio et mute
 var audio = document.getElementById('audio')
 var muet = document.getElementById('muet')
 
@@ -420,7 +421,7 @@ noeffect.addEventListener('click', () => {
     });
 })
 
-
+// conditions pour les animations du player
 function playerFlask() {
     if(playervar == "sorciere" && botselection == "loups-garous" || botselection == "ange") {
         console.log("poison")
@@ -444,6 +445,7 @@ function playerFlask() {
     } 
 };
 
+// conditions pour les animations de l'ia
 function iaFlask() {
     if(botselection == "sorciere" && playervar == "loups-garous" || playervar == "ange") {
         console.log("poison2")
