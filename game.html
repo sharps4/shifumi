@@ -32,7 +32,7 @@
                         </div>
                         <!--Taux de victoire-->
                         <div class="col fs-3">
-                            <p class="text-end text-center"><span id="winrate"></span> victoire</p>
+                            <p class="text-end text-center mt-3"><span id="winrate"></span> victoire</p>
                         </div>
                     </div>
                 </div>
@@ -89,8 +89,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-4 mt-2">
-                        <button class="musicbutton" id="audio" onclick="ambiancePlay('play')"><img class="audio-img" src="assets/img/muet.png"></button>
-                        <button class="musicbutton d-none" id="muet" onclick="ambianceStop('stop')"><img class="audio-img" src="assets/img/audio.png"></button>
+                        <button class="musicbutton" id="audio" onclick="ambianceStop()"><img class="audio-img" src="assets/img/muet.png"></button>
+                        <button class="musicbutton d-none" id="muet" onclick="ambiancePlay()"><img class="audio-img" src="assets/img/audio.png"></button>
                         <button class="musicbutton" id="effect"><img class="audio-img" src="assets/img/noeffect.png"></button>
                         <button class="musicbutton d-none" id="noeffect"><img class="audio-img" src="assets/img/effect.png"></button>
                         <button class="skypebutton" id="skype" onclick="skypePlay()"></button>
@@ -157,7 +157,7 @@
             <div id="popup2" class="modal text-center d-none">
                 <!-- Modal content -->
                     <div class="modal-content_popup">
-                        <div class="modal-header_popup">
+                        <div class="modal-header_popup" id="mdh">
                             <h2 id="victoryMSG"></h2>
                         </div>
                         <div class="modal-body_popup row d-flex mt-3">

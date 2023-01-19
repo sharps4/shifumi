@@ -64,7 +64,7 @@ body {
 
 /**/
 .margin-top{
-    margin-top: 20px;
+    margin-top: 9px;
 } 
 
 .margin{
@@ -400,8 +400,15 @@ h2 {
     background-color: #5cb85c;
     color: white;
   }
+
+  .modal-header_popup_red {
+    font-family: sirenia,sans-serif;
+    padding: 2px 16px;
+    background-color: red;
+    color: white;
+  }
   
-  
+
   .modal-body_popup {padding: 2px 16px;}
   
   

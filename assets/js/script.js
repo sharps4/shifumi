@@ -218,7 +218,7 @@ function roundChange() {
     }
 };
 
-// Fonctionnement des ùanches
+// Fonctionnement des manches
 function manche() {
     removePoison()
     removeFork()
@@ -326,13 +326,18 @@ function resetRound() { // quand on atteint 10 manches le jeu se reset et un pop
     }
 };
 
+var mdh = document.getElementById('mdh');
 
 function victoryMSG() { // popup de victoire ou défaite
     if(score_user>score_ia){
         document.getElementById('victoryMSG').innerHTML="Vous avez gagné GG";
+        mdh.classList.remove('modal-header_popup_red');
+        mdh.classList.add('modal-header_popup');
     }
     if(score_ia>score_user){
         document.getElementById('victoryMSG').innerHTML="Vous avez perdu...";
+        mdh.classList.remove('modal-header_popup');
+        mdh.classList.add('modal-header_popup_red');
     }if(score_ia==score_user){
         document.getElementById('victoryMSG').innerHTML="Egalité...";
     }
@@ -393,26 +398,7 @@ effect.addEventListener('click', () => {
     effect.classList.add('d-none')
     noeffect.classList.remove('d-none')
 
-    sorciere.addEventListener('click',(event) => {
-        song_sorciere.play();
-    });
-    villageois.addEventListener('click',(event) => {
-        song_villageois.play();
-    });
-    ange.addEventListener('click',(event) => {
-        song_ange.play();
-    });
-    demon.addEventListener('click',(event) => {
-        song_demon.play();
-    });
-    loups_garous.addEventListener('click',(event) => {
-        song_lg.play();
-    });
-})
-
-noeffect.addEventListener('click', () => {
-    noeffect.classList.add('d-none')
-    effect.classList.remove('d-none')
+    console.log("stop")
 
     sorciere.addEventListener('click',(event) => {
         song_sorciere.pause();
@@ -428,6 +414,28 @@ noeffect.addEventListener('click', () => {
     });
     loups_garous.addEventListener('click',(event) => {
         song_lg.pause();
+    });
+})
+
+noeffect.addEventListener('click', () => {
+    noeffect.classList.add('d-none')
+    effect.classList.remove('d-none')
+    console.log('lance')
+
+    sorciere.addEventListener('click',(event) => {
+        song_sorciere.play();
+    });
+    villageois.addEventListener('click',(event) => {
+        song_villageois.play();
+    });
+    ange.addEventListener('click',(event) => {
+        song_ange.play();
+    });
+    demon.addEventListener('click',(event) => {
+        song_demon.play();
+    });
+    loups_garous.addEventListener('click',(event) => {
+        song_lg.play();
     });
 })
 
