@@ -219,7 +219,8 @@
     width: 80px;
 }
 
-.musicplay{
+.musicbutton{
+    font-family: sirenia,sans-serif;
     color: #221B3D;
     background-color: #d3d4d9;
     border-radius: 5px 5px 5px 5px;

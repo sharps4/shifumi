@@ -129,7 +129,9 @@ function winLoose() {
         score_user = score_user + 1 
         document.getElementById('score-user').innerHTML = score_user;
         document.getElementById('winorloose').innerHTML = "Gagné !";
-    } else if(score_user == 0&&){}
+    } else if(win_user == 0 && win_ia == 0){
+        document.getElementById('winorloose').innerHTML = "Egalité !";
+    }
     if(score_user == 0 ) {
         document.getElementById('score-user').innerHTML = "0";
     } else if (score_ia == 0){
