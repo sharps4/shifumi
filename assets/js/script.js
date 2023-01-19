@@ -47,9 +47,6 @@ loups_garous.addEventListener('click',(event) => {
     song_lg.play();
 });
 
-// fonction permetant de garder la selection du joueur
-var audio = new Audio('../audios/');
-audio.play();
 
 var playervar;
 function playerSelection() { // carte jouée par le joueur
@@ -189,7 +186,7 @@ function victoryMSG() { // popup de victoire ou défaite
     if(score_ia>score_user){
         document.getElementById('victoryMSG').innerHTML="Vous avez perdu...";
     }if(score_ia==score_user){
-        document.getElementById('victoryMSG').innerHTML="Egalitée entre vous et le bot...";
+        document.getElementById('victoryMSG').innerHTML="Egalité...";
     }
 };
 // function permetant d'arretet et de relancer le son d'amniance
@@ -200,7 +197,6 @@ function ambiancePlay() {
 function ambianceStop() {
     song_ambiance.pause()
 }
-
 
 // Get the modal
 var modal_popup = document.getElementById("myModal_popup");
@@ -228,6 +224,72 @@ window.onclick = function(event) {
   }
 }
 
+var audio = document.getElementById('audio')
+var muet = document.getElementById('muet')
+
+audio.addEventListener('click', () => {
+    audio.classList.add('d-none')
+    muet.classList.remove('d-none')
+})
+
+muet.addEventListener('click', () => {
+    muet.classList.add('d-none')
+    audio.classList.remove('d-none')
+})
+
+var effect = document.getElementById('effect')
+var noeffect = document.getElementById('noeffect')
+
+effect.addEventListener('click', () => {
+    effect.classList.add('d-none')
+    noeffect.classList.remove('d-none')
+
+    sorciere.addEventListener('click',(event) => {
+        song_sorciere.play();
+    });
+    villageois.addEventListener('click',(event) => {
+        song_villageois.play();
+    });
+    ange.addEventListener('click',(event) => {
+        song_ange.play();
+    });
+    demon.addEventListener('click',(event) => {
+        song_demon.play();
+    });
+    loups_garous.addEventListener('click',(event) => {
+        song_lg.play();
+    });
+})
+
+noeffect.addEventListener('click', () => {
+    noeffect.classList.add('d-none')
+    effect.classList.remove('d-none')
+
+    sorciere.addEventListener('click',(event) => {
+        song_sorciere.pause();
+    });
+    villageois.addEventListener('click',(event) => {
+        song_villageois.pause();
+    });
+    ange.addEventListener('click',(event) => {
+        song_ange.pause();
+    });
+    demon.addEventListener('click',(event) => {
+        song_demon.pause();
+    });
+    loups_garous.addEventListener('click',(event) => {
+        song_lg.pause();
+    });
+})
+
+
+var flask = document.getElementById("flask");
+
+// Animation qui déplace la fiole vers la droite
+function throwFlask() {
+  flask.style.left = "100px";
+  flask.style.transform = "rotate(360deg)";
+}
 
 //Button play
 var play = document.getElementById('startManche'); // on déclare la variable play

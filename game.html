@@ -43,9 +43,12 @@
                                 <h2 class="text-center" id="botselection">???</h2>
                             </div>
                         </div>
-                        <h2 class="col-4 text-center d-flex justify-content-center"><p id="score-ia">0</p>-<p id="score-user">0</p></h2>
+                        <h2 class="col-4 text-center d-flex justify-content-center mt-5"><p id="score-ia">0</p>-<p id="score-user">0</p></h2>
                         <div class="col-4 justify-content-center d-flex align-items-center">
                             <div class="col-4 d-flex flex-column justify-content-between mt-container">
+                                <div id="flask-container">
+                                    <img src="flask.png" id="flask" alt="Flask">
+                                  </div>
                                 <h2 class="text-center" id="player"></h2>
                             </div>
                         </div>
@@ -57,8 +60,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-4 mt-2">
-                        <button class="musicbutton" onclick="ambiancePlay('play')">Jouer la musique</button>
-                        <button class="musicbutton" onclick="ambianceStop('stop')">Stop la musique</button>
+                        <button class="musicbutton" id="audio" onclick="ambiancePlay('play')"><img class="audio-img" src="assets/img/muet.png"></button>
+                        <button class="musicbutton d-none" id="muet" onclick="ambianceStop('stop')"><img class="audio-img" src="assets/img/audio.png"></button>
+                        <button class="musicbutton" id="effect"><img class="audio-img" src="assets/img/effect.png"></button>
+                        <button class="musicbutton d-none" id="noeffect"><img class="audio-img" src="assets/img/noeffect.png"></button>
                     </div>
                 </div>
             </div>

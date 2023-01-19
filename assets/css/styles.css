@@ -261,6 +261,10 @@ body {
     transition: transform 0.8s ease; 
 }
 
+.audio-img {
+    width: 40px;
+}
+
 /*fin boutton*/
 
 p {
