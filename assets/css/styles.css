@@ -314,6 +314,63 @@ h2 {
     transition: all 1s ease-in-out;
   }
 
+  #ray {
+    width: 100px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
+
+  #fork {
+    margin-top: 60px;
+    width: 130px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
+
+  #fire {
+    width: 120px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
+
+  #claw {
+    width: 100px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
+  
+
+  #flask2 {
+    width: 100px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
+
+  #ray2 {
+    width: 100px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
+
+  #fork2 {
+    margin-top: 60px;
+    width: 130px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
+
+  #fire2 {
+    width: 120px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
+
+  #claw2 {
+    width: 100px;
+    position: absolute;
+    transition: all 1s ease-in-out;
+  }
+
 
 /* The Modal (background) */
 .modal_popup {

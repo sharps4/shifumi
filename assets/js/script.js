@@ -3,26 +3,138 @@ var ange = document.getElementById('ange');
 ange.addEventListener('click',playerSelection);
 var sorciere = document.getElementById('sorciere');
 sorciere.addEventListener('click',playerSelection);
-sorciere.addEventListener('click',playerSelection);
 var villageois = document.getElementById('villageois');
 villageois.addEventListener('click',playerSelection);
 var loups_garous = document.getElementById('loups-garous');
 loups_garous.addEventListener('click',playerSelection);
 var demon = document.getElementById('demon');
 demon.addEventListener('click',playerSelection);
+
 var flask = document.getElementById('flask')
+var fork = document.getElementById('fork')
+var ray = document.getElementById('ray')
+var fire = document.getElementById('fire')
+var claw = document.getElementById('claw')
+
+var flask2 = document.getElementById('flask2')
+var fork2 = document.getElementById('fork2')
+var ray2 = document.getElementById('ray2')
+var fire2 = document.getElementById('fire2')
+var claw2 = document.getElementById('claw2')
 
 
-function fraskThrow() {
+function poisonThrow() {
     flask.classList.remove('d-none')
-    gsap.fromTo(".flask", { x: 0 }, { x: -720, rotation: -120}) 
+    gsap.fromTo(".flask", { x: 0 }, { x: -720, rotation: -120 }) 
 };  
 
-setTimeout(removeFrask(), 5000); 
+function removePoison() {
+    if (flask.classList != 'd-none') {
+        flask.classList.add('d-none')
+    }
+};
 
-function removeFrask() {
-    flask.classList.add('d-none')
-}
+function rayThrow() {
+    ray.classList.remove('d-none')
+    gsap.fromTo(".ray", { x: 0 }, {x: -720, y: -100 }) 
+};  
+
+function removeRay() {
+    if (ray.classList != 'd-none') {
+        ray.classList.add('d-none')
+    }
+};
+
+function forkThrow() {
+    fork.classList.remove('d-none')
+    gsap.fromTo(".fork",{ x: 0 }, { x: -720, rotation: -135 }) 
+};  
+
+function removeFork() {
+    if (fork.classList != 'd-none') {
+        fork.classList.add('d-none')
+    }
+};
+
+function fireThrow() {
+    fire.classList.remove('d-none')
+    gsap.set(".fire",{ x: -830, y: 130}) 
+};  
+
+function removeFire() {
+    if (fire.classList != 'd-none') {
+        fire.classList.add('d-none')
+    }
+};
+
+function clawThrow() {
+    claw.classList.remove('d-none')
+    gsap.set(".claw", { x: -850 }) 
+};  
+
+function removeClaw() {
+    if (claw.classList != 'd-none') {
+        claw.classList.add('d-none')
+    }
+};
+
+
+
+
+function poisonThrowIA() {
+    flask2.classList.remove('d-none')
+    gsap.fromTo(".flask2", { x: -720 }, { x: 790, rotation: 120 }) 
+};  
+
+function removePoisonIA() {
+    if (flask2.classList != 'd-none') {
+        flask2.classList.add('d-none')
+    }
+};
+
+function rayThrowIA() {
+    ray2.classList.remove('d-none')
+    gsap.fromTo(".ray2", { x: -720 }, {x: 790, y: -90 }) 
+};  
+
+function removeRayIA() {
+    if (ray2.classList != 'd-none') {
+        ray2.classList.add('d-none')
+    }
+};
+
+function forkThrowIA() {
+    fork2.classList.remove('d-none')
+    gsap.fromTo(".fork2",{ x: -720 }, { x: 790, rotation: 45 }) 
+};  
+
+function removeForkIA() {
+    if (fork2.classList != 'd-none') {
+        fork2.classList.add('d-none')
+    }
+};
+
+function fireThrowIA() {
+    fire2.classList.remove('d-none')
+    gsap.set(".fire2",{ x: 920, y: 100}) 
+};  
+
+function removeFireIA() {
+    if (fire2.classList != 'd-none') {
+        fire2.classList.add('d-none')
+    }
+};
+
+function clawThrowIA() {
+    claw2.classList.remove('d-none')
+    gsap.set(".claw2", { x: 910 }) 
+};  
+
+function removeClawIA() {
+    if (claw2.classList != 'd-none') {
+        claw2.classList.add('d-none')
+    }
+};
 
 // déclaration des variable contenant le son
 var song_ambiance = new Audio()
@@ -98,6 +210,16 @@ function roundChange() {
 
 
 function manche() {
+    removePoison()
+    removeFork()
+    removeRay()
+    removeFire()
+    removeClaw()
+    removePoisonIA()
+    removeForkIA()
+    removeRayIA()
+    removeFireIA()
+    removeClawIA()
     var winCombinations = { // Tableau des win conditions
         "sorciere": ["loups-garous", "ange"],
         "villageois": ["sorciere", "demon"],
@@ -122,6 +244,7 @@ function manche() {
         round_comp = 1;
         win_user = 0;
         roundChange(); 
+        iaFlask();
         winLoose();
         winrateUser();
     } else { 
@@ -297,11 +420,50 @@ noeffect.addEventListener('click', () => {
     });
 })
 
-var flask = document.getElementById("flask");
 
 function playerFlask() {
     if(playervar == "sorciere" && botselection == "loups-garous" || botselection == "ange") {
-        fraskThrow();
+        console.log("poison")
+        poisonThrow();
+    } 
+    else if(playervar == "demon" && botselection == "sorciere" || botselection == "loups-garous") {
+        console.log("feu")
+        fireThrow();
+    } 
+    else if(playervar == "loups-garous" && botselection == "ange" || botselection == "villageois") {
+        console.log("griffe")
+        clawThrow();
+    } 
+    else if(playervar == "ange" && botselection == "demon" || botselection == "villageois") {
+        console.log("éclair")
+        rayThrow();
+    } 
+    else if(playervar == "villageois" && botselection == "demon" || botselection == "sorciere") {
+        console.log("fourche")
+        forkThrow();
+    } 
+};
+
+function iaFlask() {
+    if(botselection == "sorciere" && playervar == "loups-garous" || playervar == "ange") {
+        console.log("poison2")
+        poisonThrowIA();
+    } 
+    else if(botselection == "demon" && playervar == "sorciere" || playervar == "loups-garous") {
+        console.log("feu2")
+        fireThrowIA();
+    } 
+    else if(botselection == "loups-garous" && playervar == "ange" || playervar == "villageois") {
+        console.log("griffe2")
+        clawThrowIA();
+    } 
+    else if(botselection == "ange" && playervar == "demon" || playervar == "villageois") {
+        console.log("éclair2")
+        rayThrowIA();
+    } 
+    else if(botselection == "villageois" && playervar == "demon" || playervar == "sorciere") {
+        console.log("fourche2")
+        forkThrowIA();
     } 
 };
 
