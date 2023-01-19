@@ -9,6 +9,7 @@ var loups_garous = document.getElementById('loups-garous');
 loups_garous.addEventListener('click',playerSelection);
 var demon = document.getElementById('demon');
 demon.addEventListener('click',playerSelection);
+var skype = document.getElementById('skype')
 
 // Variables pour les anims
 var flask = document.getElementById('flask')
@@ -155,6 +156,9 @@ song_demon.src = './assets/audios/demon.mp3';
 var song_lg = new Audio()
 song_lg.src = './assets/audios/lg.mp3';
 
+var skype_song = new Audio()
+skype_song.src= './assets/audios/skype.mp3'
+
 
 // son produit lord de la selection 
 sorciere.addEventListener('click',(event) => {
@@ -172,6 +176,12 @@ demon.addEventListener('click',(event) => {
 loups_garous.addEventListener('click',(event) => {
     song_lg.play();
 });
+
+function skypePlay() {
+    skype.addEventListener('click', (event) => {
+        skype_song.play()
+    });
+}
 
 
 var playervar;
@@ -469,6 +479,7 @@ function iaFlask() {
     } 
 };
 
+
 //Button play
 var play = document.getElementById('startManche'); // on déclare la variable play
 // play.addEventListener('click',getRandomChoice);
@@ -482,4 +493,4 @@ window.onload = function () { // local storage
     document.getElementById('score-user').innerHTML = localStorage.getItem('score_usersto');
     document.getElementById('score-ia').innerHTML = localStorage.getItem('score_iasto');
     document.getElementById('winrate').innerHTML = localStorage.getItem('winpourcentagesto');
-};
+};      
