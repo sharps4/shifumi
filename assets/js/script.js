@@ -3,12 +3,26 @@ var ange = document.getElementById('ange');
 ange.addEventListener('click',playerSelection);
 var sorciere = document.getElementById('sorciere');
 sorciere.addEventListener('click',playerSelection);
+sorciere.addEventListener('click',playerSelection);
 var villageois = document.getElementById('villageois');
 villageois.addEventListener('click',playerSelection);
 var loups_garous = document.getElementById('loups-garous');
 loups_garous.addEventListener('click',playerSelection);
 var demon = document.getElementById('demon');
 demon.addEventListener('click',playerSelection);
+var flask = document.getElementById('flask')
+
+
+function fraskThrow() {
+    flask.classList.remove('d-none')
+    gsap.fromTo(".flask", { x: 0 }, { x: -720, rotation: -120}) 
+};  
+
+setTimeout(removeFrask(), 5000); 
+
+function removeFrask() {
+    flask.classList.add('d-none')
+}
 
 // déclaration des variable contenant le son
 var song_ambiance = new Audio()
@@ -98,6 +112,7 @@ function manche() {
         round_comp = 1;
         win_ia = 0;
         roundChange();
+        playerFlask();
         winLoose();
         winrateUser();
     }
@@ -282,14 +297,13 @@ noeffect.addEventListener('click', () => {
     });
 })
 
-
 var flask = document.getElementById("flask");
 
-// Animation qui déplace la fiole vers la droite
-function throwFlask() {
-  flask.style.left = "100px";
-  flask.style.transform = "rotate(360deg)";
-}
+function playerFlask() {
+    if(playervar == "sorciere" && botselection == "loups-garous" || botselection == "ange") {
+        fraskThrow();
+    } 
+};
 
 //Button play
 var play = document.getElementById('startManche'); // on déclare la variable play
@@ -298,7 +312,7 @@ window.addEventListener('load', (event) => {
     ambiancePlay()
 });
 
-play.addEventListener('click',() => {botSelection(); manche(); resetRound(); victoryMSG()}); // on ajoute l'envent click au bouton qui déclanche les fonctions nécessaires au jeu
+play.addEventListener('click',() => {botSelection(); manche(); resetRound(); victoryMSG();}); // on ajoute l'envent click au bouton qui déclanche les fonctions nécessaires au jeu
 window.onload = function () { // local storage 
     document.getElementById('round').innerHTML = localStorage.getItem('roundsto');
     document.getElementById('score-user').innerHTML = localStorage.getItem('score_usersto');
