@@ -13,6 +13,8 @@
     <!--Font-->
     <link rel="stylesheet" href="https://use.typekit.net/rgq6fhn.css">
 
+    <link rel="icon" href="favicon.ico" />
+
     <title>Shifumi</title>
 </head>
 <body class="bg-purple txt-purple bg-image">
@@ -89,33 +91,34 @@
                 <input type="button" class="button-play" value="Jouer" id="startManche"/>
                 <input type="button" class="button-play" value ="Recommencer" onclick="resetBTN(), history.go(0)"/>
             </div>
-            <!-- Button pop up-->
-            <button type="button" class="popup sec-btn" data-bs-toggle="modal" data-bs-target="#popup">Afficher les règles</button>
 
-            <!-- Pop-up -->
-            <div id="popup" class="modal">
-                <div class="modal-dialog modal-dialog-centered mod">
-                    <div class="modal-content ">
-                        <div class="modal-header bg-grey text-center ">
-                            <p> Régles du jeu </p>
-                        </div>
-                        <div class="modal-body bg-grey text-center ">
-                            <p>la sorcière empoisonne le loup-garou</p>
-                            <p>la sorcière blasphème l’ange</p>
-                            <p>le loup garou mange les villageois</p>
-                            <p>le loup-garou blasphème l’ange</p>
-                            <p>le démon corrompt la sorcière</p>
-                            <p>le démon asservi le loup-garou</p>
-                            <p>l'ange renvoi en enfer le démon</p>
-                            <p>l’ange démérite les villageois</p>
-                            <p>les villageois conjure le démon</p>
-                            <p>les villageois brulent la sorcière</p>
-                        </div>
-                        <button type="button" class="closepopup" data-bs-dismiss="modal">Fermer</button>
+            <!-- Button pop up-->
+            <button id="myBtn_popup" class="popup sec-btn">Voir les règles</button>
+            <!-- Modal content -->
+            <!-- The Modal -->
+            <div id="myModal_popup" class="modal text-center">
+            <!-- Modal content -->
+                <div class="modal-content_popup">
+                    <div class="modal-header_popup">
+                        <span class="close_popup">&times;</span>
+                        <h2>Les règles du Shifumi: </h2>
+                    </div>
+                    <div class="modal-body_popup">
+                        <p><img class="pad icons" src="assets/img/sorciere.png">la sorcière empoisonne le loup-garou<img class="fa-solid fa-paw pad icons" src="assets/img/loups-garous.png"></p>
+                        <p><img class="pad icons" src="assets/img/sorciere.png">la sorcière blasphème l’ange<img class="fa-solid fa-cross pad icons" src="assets/img/ange.png"></p>
+                        <p><img class="fa-solid fa-paw pad icons" src="assets/img/loups-garous.png">le loup garou mange les villageois<img class="fa-solid fa-people-group pad icons" src="assets/img/villageois.png"></p>
+                        <p><img class="fa-solid fa-paw pad icons" src="assets/img/loups-garous.png">le loup-garou blasphème l’ange<img class="fa-solid fa-cross pad icons" src="assets/img/ange.png"></p>
+                        <p><img class="fa-solid fa-star-of-david pad icons" src="assets/img/demon.png">le démon corrompt la sorcière<img class="pad icons" src="assets/img/sorciere.png"></p>
+                        <p><img class="fa-solid fa-star-of-david pad icons" src="assets/img/demon.png">le démon asservi le loup-garou<img class="fa-solid fa-paw pad icons" src="assets/img/loups-garous.png"></p>
+                        <p><img class="fa-solid fa-cross pad icons" src="assets/img/ange.png">l'ange renvoi en enfer le démon<img class="fa-solid fa-star-of-david pad icons" src="assets/img/demon.png"></p>
+                        <p><img class="fa-solid fa-cross pad icons" src="assets/img/ange.png">l’ange anathématise les villageois<img class="fa-solid fa-people-group pad icons" src="assets/img/villageois.png"></p>
+                        <p><img class="fa-solid fa-people-group pad icons" src="assets/img/villageois.png">les villageois conjurent le démon<img class="fa-solid fa-star-of-david pad icons" src="assets/img/demon.png"></p>
+                        <p><img class="fa-solid fa-people-group pad icons" src="assets/img/villageois.png">les villageois brulent la sorcière<img class="pad icons" src="assets/img/sorciere.png"></p>
                     </div>
                 </div>
             </div>
 
+            <!-- Pop-up -->
             <div id="popup2" class="modal d-none">
                 <div class="modal-dialog modal-dialog-centered ">
                     <div class="modal-content">
