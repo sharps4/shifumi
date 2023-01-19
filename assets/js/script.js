@@ -11,6 +11,9 @@ var demon = document.getElementById('demon');
 demon.addEventListener('click',playerSelection);
 
 // déclaration des variable contenant le son
+var song_ambiance = new Audio()
+song_ambiance.src = './assets/audios/ambiance.mp4'
+
 var song_sorciere = new Audio()
 song_sorciere.src = './assets/audios/sorciere.mp3';
 
@@ -18,7 +21,7 @@ var song_villageois = new Audio()
 song_villageois.src = './assets/audios/villageois.3gp';
 
 var song_ange = new Audio()
-song_ange.src = './assets/audios/ange.mp3';
+song_ange.src = './assets/audios/ange.mp4';
 
 var song_demon = new Audio()
 song_demon.src = './assets/audios/demon.mp3';
@@ -126,7 +129,7 @@ function winLoose() {
         score_user = score_user + 1 
         document.getElementById('score-user').innerHTML = score_user;
         document.getElementById('winorloose').innerHTML = "Gagné !";
-    } 
+    } else if(score_user == 0&&){}
     if(score_user == 0 ) {
         document.getElementById('score-user').innerHTML = "0";
     } else if (score_ia == 0){
@@ -185,12 +188,22 @@ function victoryMSG() { // popup de victoire ou défaite
         document.getElementById('victoryMSG').innerHTML="Egalitée entre vous et le bot...";
     }
 };
+// function permetant d'arretet et de relancer le son d'amniance
+function ambiancePlay() {
+    song_ambiance.play()
+}
 
-
+function ambianceStop() {
+    song_ambiance.pause()
+}
 
 //Button play
 var play = document.getElementById('startManche'); // on déclare la variable play
 // play.addEventListener('click',getRandomChoice);
+window.addEventListener('load', (event) => {
+    ambiancePlay()
+});
+
 play.addEventListener('click',() => {botSelection(); manche(); resetRound(); victoryMSG()}); // on ajoute l'envent click au bouton qui déclanche les fonctions nécessaires au jeu
 window.onload = function () { // local storage 
     document.getElementById('round').innerHTML = localStorage.getItem('roundsto');

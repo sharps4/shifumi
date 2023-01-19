@@ -85,6 +85,9 @@
     background-color: var(--opa-loups-garous);
 }
 
+.playstop {
+    margin-left: 1395px;
+}
 
 .carte1:hover {
     background-color: var(--sorciere);
@@ -214,6 +217,12 @@
 
 .icons {
     width: 80px;
+}
+
+.musicplay{
+    color: #221B3D;
+    background-color: #d3d4d9;
+    border-radius: 5px 5px 5px 5px;
 }
 
 /*fin boutton*/
