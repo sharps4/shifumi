@@ -11,6 +11,12 @@
     --shadow-demon: rgb(157, 1, 1);
     --shadow-loups-garous: rgb(11, 0, 80);
 
+    --opa-sorciere: rgba(42, 0, 49, 0.75);
+    --opa-villageois: rgba(93, 71, 41, 0.75);
+    --opa-ange: rgba(115, 115, 11, 0.75);
+    --opa-demon: rgba(103, 2, 2, 0.75);
+    --opa-loups-garous: rgba(10, 1, 67, 0.75);
+
     --bg: #d3d4d9;
     --dark-blue: #221B3D;
 }
@@ -57,6 +63,29 @@
   }
 
   /* carte personnage*/
+
+
+.carte1 {
+    background-color: var(--opa-sorciere);
+}
+
+.carte2 {
+    background-color: var(--opa-villageois);
+}
+
+.carte3 {
+    background-color: var(--opa-ange);
+}
+
+.carte4 {
+    background-color: var(--opa-demon);
+}
+
+.carte5 {
+    background-color: var(--opa-loups-garous);
+}
+
+
 .carte1:hover {
     background-color: var(--sorciere);
     color: black;
@@ -152,12 +181,24 @@
     font-size: 25px;
 }
 
+.mod {
+    border-radius: 5px;
+}
+
+
 .closepopup{
     font-family: sirenia,sans-serif;
     background-color: var(--bg);
-    color: #221B3D;
+    color: var(--dark-blue);
     border: solid var(--dark-blue);
+    border-radius: 0 0 5px 5px;
     font-size: 25px;
+}
+
+.closepopup:hover {
+    background-color: #c1c1c1;
+    transform: translateY(-1px);
+    transition: transform 0.8s ease;
 }
 
 .reset{

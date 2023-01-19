@@ -12,7 +12,6 @@ demon.addEventListener('click',playerSelection);
 //fonction permetant de garder la selection du joueur
 
 
-
 var playervar;
 function playerSelection() { // carte jouée par le joueur
 playervar = this.getAttribute("id");
@@ -25,7 +24,7 @@ var choices = document.getElementsByClassName("choice");
 var botrandom = Math.floor(Math.random() * choices.length);
 botselection = choices[botrandom].getAttribute("id");
 document.getElementById('botselection').innerHTML = '<img src="assets/img/' + botselection + '.png" width="200" height="200">';
-}
+};
 
 
 let win_ia = null // variable qui stock la win de l'ia si elle gagne le round
@@ -45,7 +44,7 @@ function roundChange() {
         document.getElementById('round').innerHTML = testround;
         localStorage.setItem('roundsto', testround);
     }
-}
+};
 
 
 function manche() {
@@ -77,7 +76,7 @@ function manche() {
         win_ia = 0;
         winLoose();
     } 
-}
+};
 
 
 var testrate;
@@ -86,9 +85,11 @@ function winLoose() {
     if (win_ia == 1) { // le =1 signifie que l'ia a gagné mais elle peut être changé en fonction du nom que tu donnes à ta variable, ex: win_ia = winTrue, si la valeur n'est pas égale à 1 alors l'ia à perdue le round
         score_ia = score_ia + 1 // on ajoute +1 au score de l'ia si elle à gagné
         document.getElementById('score-ia').innerHTML = score_ia; // on modife le texte qui contient le score en ciblant son id
+        document.getElementById('winorloose').innerHTML = "Perdu !";
     } else if(win_user == 1) {
         score_user = score_user + 1 
         document.getElementById('score-user').innerHTML = score_user;
+        document.getElementById('winorloose').innerHTML = "Gagné !";
     } 
     if(score_user == 0 ) {
         document.getElementById('score-user').innerHTML = "0";
@@ -145,7 +146,7 @@ function victoryMSG() { // popup de victoire ou défaite
     if(score_ia>score_user){
         document.getElementById('victoryMSG').innerHTML="Vous avez perdu...";
     }if(score_ia==score_user){
-        document.getElementById('victoryMSG').innerHTML="Vous avez eu une égalitée bravo même pas capable de battre un bot";
+        document.getElementById('victoryMSG').innerHTML="Egalitée entre vous et le bot...";
     }
 };
 
