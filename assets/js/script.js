@@ -12,7 +12,7 @@ demon.addEventListener('click',playerSelection);
 
 // déclaration des variable contenant le son
 var song_sorciere = new Audio()
-song_sorciere.src = './assets/audios/sorciere';
+song_sorciere.src = './assets/audios/sorciere.mp3';
 
 var song_villageois = new Audio()
 song_villageois.src = './assets/audios/villageois.3gp';
@@ -24,7 +24,7 @@ var song_demon = new Audio()
 song_demon.src = './assets/audios/demon.mp3';
 
 var song_lg = new Audio()
-song_lg.src = './assets/audios/lg';
+song_lg.src = './assets/audios/lg.mp3';
 
 
 // son produit lord de la selection 
@@ -43,7 +43,6 @@ demon.addEventListener('click',(event) => {
 loups_garous.addEventListener('click',(event) => {
     song_lg.play();
 });
-
 
 // fonction permetant de garder la selection du joueur
 var audio = new Audio('../audios/');
