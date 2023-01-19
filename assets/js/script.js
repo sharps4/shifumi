@@ -9,8 +9,45 @@ var loups_garous = document.getElementById('loups-garous');
 loups_garous.addEventListener('click',playerSelection);
 var demon = document.getElementById('demon');
 demon.addEventListener('click',playerSelection);
-//fonction permetant de garder la selection du joueur
 
+// déclaration des variable contenant le son
+var song_sorciere = new Audio()
+song_sorciere.src = './assets/audios/sorciere';
+
+var song_villageois = new Audio()
+song_villageois.src = './assets/audios/villageois.3gp';
+
+var song_ange = new Audio()
+song_ange.src = './assets/audios/ange.mp3';
+
+var song_demon = new Audio()
+song_demon.src = './assets/audios/demon.mp3';
+
+var song_lg = new Audio()
+song_lg.src = './assets/audios/lg';
+
+
+// son produit lord de la selection 
+sorciere.addEventListener('click',(event) => {
+    song_sorciere.play();
+});
+villageois.addEventListener('click',(event) => {
+    song_villageois.play();
+});
+ange.addEventListener('click',(event) => {
+    song_ange.play();
+});
+demon.addEventListener('click',(event) => {
+    song_demon.play();
+});
+loups_garous.addEventListener('click',(event) => {
+    song_lg.play();
+});
+
+
+// fonction permetant de garder la selection du joueur
+var audio = new Audio('../audios/');
+audio.play();
 
 var playervar;
 function playerSelection() { // carte jouée par le joueur
@@ -149,6 +186,7 @@ function victoryMSG() { // popup de victoire ou défaite
         document.getElementById('victoryMSG').innerHTML="Egalitée entre vous et le bot...";
     }
 };
+
 
 
 //Button play
